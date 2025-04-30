@@ -1,6 +1,13 @@
 #! /bin/bash
 
-clear
+if [ -e ~/s21_cat ]
+	then
+		echo ""
+	else 
+		echo "Для начала соберите проект: make"
+		exit
+fi
+
 echo "Запуск тестирования новой утилиты s21_cat..."
 read -p "Введите файл, на котором будет происходить тестирование: " test_file
 
@@ -20,10 +27,10 @@ file_cat="outcat.txt"
 n=1
 succ=0
 fail=0
-for flag in "b" "e" "n" "s" "t" "v" "sE" "T" "veb" "enssv" "ETsvb" "sbentvET"
+for flag in "b" "e" "n" "s" "t" "v" "sE" "T" "veb" "enssv" "ETsvb" "sbetvET"
 	do 
-		echo -n "TEST $n. Flag = $flag : "
-		./s21_cat -$flag $test_file > $file_s21 
+		echo -ne "TEST $n. Flag = $flag\t:"
+		~/s21_cat -$flag $test_file > $file_s21 
 		cat -$flag $test_file > $file_cat
 
 		result=$(diff $file_s21 $file_cat)
