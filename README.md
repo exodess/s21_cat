@@ -21,6 +21,10 @@ cd s21_cat/
 ```bash
 make
 ```
+4. Update aliases
+```bash
+source ~/.$(echo $SHELL | cut -f 3 -d "/")rc
+```
 
 ## Testing
 
